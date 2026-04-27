@@ -1,0 +1,65 @@
+{
+  "name": "codebase-copilot",
+  "displayName": "Codebase Copilot",
+  "description": "Local AI assistant grounded in your repository",
+  "version": "0.1.0",
+  "publisher": "codebase-copilot",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["AI", "Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codebaseCopilot.indexRepo",
+        "title": "Codebase Copilot: Index Current Repo"
+      },
+      {
+        "command": "codebaseCopilot.askQuestion",
+        "title": "Codebase Copilot: Ask a Question"
+      },
+      {
+        "command": "codebaseCopilot.findDeadCode",
+        "title": "Codebase Copilot: Find Dead Code"
+      },
+      {
+        "command": "codebaseCopilot.suggestTests",
+        "title": "Codebase Copilot: Suggest Tests for Symbol Under Cursor"
+      },
+      {
+        "command": "codebaseCopilot.openChat",
+        "title": "Codebase Copilot: Open Chat Panel"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "codebaseCopilot.suggestTests",
+          "when": "editorHasSelection || editorTextFocus",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Codebase Copilot",
+      "properties": {
+        "codebaseCopilot.serverUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:8000",
+          "description": "URL of the local FastAPI backend."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}
