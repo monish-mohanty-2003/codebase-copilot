@@ -1,0 +1,50 @@
+[
+  {
+    "id": "auth_location",
+    "query": "Where is authentication handled in this repo?",
+    "expected_paths": ["auth", "middleware", "login"],
+    "must_call_tool": "search_code"
+  },
+  {
+    "id": "explain_indexing",
+    "query": "Explain how the indexing pipeline works step by step.",
+    "expected_paths": ["app/indexing/pipeline.py", "app/indexing/chunker.py"],
+    "must_call_tool": "search_code"
+  },
+  {
+    "id": "find_dead_code",
+    "query": "Find dead code in this repo.",
+    "expected_paths": [],
+    "must_call_tool": "find_dead_code"
+  },
+  {
+    "id": "tests_for_chunker",
+    "query": "Suggest unit tests for the Chunker class.",
+    "expected_paths": ["app/indexing/chunker.py"],
+    "must_call_tool": "suggest_tests"
+  },
+  {
+    "id": "ranking_strategy",
+    "query": "How does the retriever rank results?",
+    "expected_paths": ["app/retrieval/retriever.py"],
+    "must_call_tool": "search_code"
+  },
+  {
+    "id": "tool_list",
+    "query": "What tools can the agent call?",
+    "expected_paths": ["app/tools/__init__.py"],
+    "must_call_tool": "search_code"
+  },
+  {
+    "id": "static_analysis",
+    "query": "Run static analysis on the indexing module and summarize problems.",
+    "expected_paths": ["app/indexing"],
+    "must_call_tool": "static_analysis"
+  },
+  {
+    "id": "patch_proposal",
+    "query": "Propose a patch to add type hints to the Chunker.count_tokens function.",
+    "expected_paths": ["app/indexing/chunker.py"],
+    "must_call_tool": "propose_patch"
+  }
+]
